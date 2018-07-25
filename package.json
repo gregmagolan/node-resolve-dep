@@ -1,5 +1,5 @@
 {
-    "name": "node-resolve-dep",
+    "name": "@gregmagolan/node-resolve-dep",
     "version": "0.0.1",
     "license": "Apache 2.0",
     "dependencies": {
