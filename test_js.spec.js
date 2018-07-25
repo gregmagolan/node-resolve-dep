@@ -1,15 +1,17 @@
-const tsc = require('typescript');
+const path = require('path');
 
-describe('typescript version', () => {
-  it('should be 2.8.1', () => {
-    expect(tsc.version).toBe('2.8.1');
+const clangVersion = require(path.join(path.dirname(require.resolve('clang-format')), 'package.json')).version;
+
+describe('clang-format version', () => {
+  it('should be 1.0.0', () => {
+    expect(clangVersion).toBe('1.0.0');
   });
 });
 
-const tscVersion = require('./javascript').tscVersion;
+const clangVersionRequired = require('./javascript').clangVersion;
 
-describe('typescript version from within require', () => {
-  it('should be 2.8.1', () => {
-    expect(tscVersion).toBe('2.8.1');
+describe('clang-format version from within require', () => {
+  it('should be 1.0.0', () => {
+    expect(clangVersionRequired).toBe('1.0.0');
   });
 });

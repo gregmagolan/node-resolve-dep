@@ -1,7 +1,7 @@
-const tsc = require('typescript');
+const path = require('path');
 
-console.log(tsc.version);
+const clangVersion = require(path.join(path.dirname(require.resolve('clang-format')), 'package.json')).version;
 
-module.exports = {
-  tscVersion: tsc.version
-}
+console.log(clangVersion);
+
+module.exports = { clangVersion }
