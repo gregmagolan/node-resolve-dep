@@ -1,0 +1,44 @@
+package(default_visibility = ["//visibility:public"])
+
+load("@build_bazel_rules_nodejs//:defs.bzl", "nodejs_binary", "jasmine_node_test")
+load("@build_bazel_rules_typescript//:defs.bzl", "ts_library")
+
+filegroup(
+    name = "node_modules",
+    srcs = glob(["node_modules/**/*"],
+        exclude = [
+            "node_modules/**/test/**",
+            "node_modules/**/docs/**",
+            "node_modules/**/.*/**"
+        ],
+    ) + glob(["node_modules/.bin/*"]),
+)
+
+nodejs_binary(
+  name = "run_js",
+  entry_point = "node_resolve_dep/javascript.js",
+  data = ["javascript.js"],
+)
+
+jasmine_node_test(
+  name = "test_js",
+  srcs = ["test_js.spec.js"],
+  data = ["javascript.js"],
+)
+
+ts_library(
+    name = "ts_lib",
+    srcs = ["typescript.ts"],
+)
+
+nodejs_binary(
+  name = "run_ts",
+  entry_point = "node_resolve_dep/typescript.js",
+  data = [":ts_lib"],
+)
+
+jasmine_node_test(
+  name = "test_ts",
+  srcs = ["test_ts.spec.js"],
+  data = [":ts_lib"],
+)

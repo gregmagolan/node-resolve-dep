@@ -1,0 +1,13 @@
+{
+    "name": "node-resolve-dep",
+    "version": "0.0.1",
+    "license": "Apache 2.0",
+    "dependencies": {
+      "typescript": "2.8.1",
+      "source-map-support": "0.5.6"
+    },
+    "devDependencies": {
+      "jasmine": "3.1.0"
+    },
+    "main": "javascript.js"
+}
